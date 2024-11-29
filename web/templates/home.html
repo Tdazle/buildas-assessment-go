@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<h1>Welcome, {{ .username }}!</h1>
+
+<!-- Table of Users -->
+<h2>Users</h2>
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Username</th>
+  </tr>
+  {{ range .users }}
+  <tr>
+    <td>{{ .ID }}</td>
+    <td>{{ .Username }}</td>
+  </tr>
+  {{ end }}
+</table>
+
+<!-- Form for Adding a New User -->
+<h2>Add New User</h2>
+<form method="POST" action="/api/v1/user/add">
+  <label for="username">Username:</label>
+  <input type="text" id="username" name="username" required>
+  <br>
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password" required>
+  <br>
+  <button type="submit">Add User</button>
+</form>
+</body>
+</html>
